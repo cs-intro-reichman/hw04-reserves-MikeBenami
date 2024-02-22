@@ -11,7 +11,7 @@ public class ArrayOps {
        int n = array.length;
        int total = (n * ( n + 1 )) / 2;
        int sum = 0;
-       for(int num : array){
+    for(int num : array){
         sum += num;
        }
        return total - sum;
@@ -19,31 +19,21 @@ public class ArrayOps {
 
     public static int secondMaxValue(int [] array) {
         int max = Integer.MIN_VALUE;
-    int secondMax = Integer.MIN_VALUE;
-
+        int secondMax = Integer.MIN_VALUE;
     for (int value : array) {
         if (value > max) {
-            secondMax = max;
-            max = value;
+            secondMax = max; 
+            max = value;    
         } else if (value > secondMax && value < max) {
-            secondMax = value;
+            secondMax = value; 
         }
     }
-
-    if (secondMax == Integer.MIN_VALUE || secondMax == max) {
-        for (int value : array) {
-            if (value > secondMax && value != max) {
-                secondMax = value;
-            }
-        }
-    }
-
-    return secondMax == Integer.MIN_VALUE ? max : secondMax;
+    return secondMax != Integer.MIN_VALUE ? secondMax : max;
 }
 
     public static boolean containsTheSameElements(int [] array1,int [] array2) {
         Set<Integer> set1 = new HashSet<>();
-    Set<Integer> set2 = new HashSet<>();
+        Set<Integer> set2 = new HashSet<>();
 
     for (int i : array1) {
         set1.add(i);
