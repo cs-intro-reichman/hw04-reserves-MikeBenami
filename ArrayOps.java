@@ -18,25 +18,20 @@ public class ArrayOps {
     }
 
     public static int secondMaxValue(int [] array) {
-        int max = Integer.MIN_VALUE;
-        int secondMax = Integer.MIN_VALUE;
-        for (int value : array) {
-            if (value > max) {
+        if (array.length < 2) return Integer.MIN_VALUE; // Edge case, not enough elements
+
+        int max = array[0] > array[1] ? array[0] : array[1];
+        int secondMax = array[0] > array[1] ? array[1] : array[0];
+    
+        for (int i = 2; i < array.length; i++) {
+            if (array[i] > max) {
                 secondMax = max;
-                max = value;
-            } else if (value > secondMax && value != max) {
-                secondMax = value;
+                max = array[i];
+            } else if (array[i] > secondMax) {
+                secondMax = array[i];
             }
         }
-        // Check for the case where secondMax wasn't updated or when duplicates of max are present
-        if (secondMax == Integer.MIN_VALUE || secondMax < max) {
-            for (int value : array) {
-                if (value == max) {
-                    secondMax = max;
-                    break;
-                }
-            }
-        }
+    
         return secondMax;
     }
 
