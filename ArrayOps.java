@@ -18,23 +18,34 @@ public class ArrayOps {
     }
 
     public static int secondMaxValue(int [] array) {
-        int max = array[0];
+        int max = Integer.MIN_VALUE;
         int secondMax = Integer.MIN_VALUE;
-        boolean foundSecondMax = false;
-    for (int i = 1; i < array.length; i++) {
-        if (array[i] == max) {
-            continue;
+        for (int value : array) {
+            if (value > max) {
+                secondMax = max;
+                max = value;
+            } else if (value != max && value > secondMax) {
+                secondMax = value;
+            }
         }
-        if (array[i] > max) {
+        if (secondMax == Integer.MIN_VALUE) {
+            return max; 
+        }
+        return secondMax;
+    }   int max = Integer.MIN_VALUE;
+    int secondMax = Integer.MIN_VALUE;
+    for (int value : array) {
+        if (value > max) {
             secondMax = max;
-            max = array[i];
-            foundSecondMax = true;
-        } else if (array[i] > secondMax || !foundSecondMax) {
-            secondMax = array[i];
-            foundSecondMax = true;
+            max = value;
+        } else if (value != max && value > secondMax) {
+            secondMax = value;
         }
     }
-    return foundSecondMax ? secondMax : max;
+    if (secondMax == Integer.MIN_VALUE) {
+        return max; 
+    }
+    return secondMax;
 }
 
     public static boolean containsTheSameElements(int [] array1,int [] array2) {
