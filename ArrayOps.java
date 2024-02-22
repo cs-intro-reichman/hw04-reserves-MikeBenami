@@ -24,12 +24,18 @@ public class ArrayOps {
             if (value > max) {
                 secondMax = max;
                 max = value;
-            } else if (value != max && value > secondMax) {
+            } else if (value > secondMax && value != max) {
                 secondMax = value;
             }
         }
-        if (secondMax == Integer.MIN_VALUE) {
-            return max; 
+        // Check for the case where secondMax wasn't updated or when duplicates of max are present
+        if (secondMax == Integer.MIN_VALUE || secondMax < max) {
+            for (int value : array) {
+                if (value == max) {
+                    secondMax = max;
+                    break;
+                }
+            }
         }
         return secondMax;
     }
