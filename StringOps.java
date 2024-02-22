@@ -30,10 +30,10 @@ public class StringOps {
         String result = "";
         for (int i = 0; i < string.length(); i++){
             char c = string.charAt(i);
-            if (vowels.indexOf(c) != -1) {
+            if (vowels.indexOf(c) >= 0) {
                 result += Character.toUpperCase(c);
             } else {
-                result += Character.toUpperCase(c);
+                result += Character.toLowerCase(c);
             }
         }
         return result;
