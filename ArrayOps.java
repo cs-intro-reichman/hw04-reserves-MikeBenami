@@ -41,9 +41,9 @@ public class ArrayOps {
         int matchCount = 0;
 
         for(int i = 0; i < array1.length; i++){
-            boolean matchFound - false;
+            boolean matchFound = false;
             for(int j = 0; j < array2.length; j++){
-                if(array1[i] == array[j] && !visited[j]){
+                if(array1[i] == array2[j] && !visited[j]){
                     visited[j] = true;
                     matchFound = true;
                     matchCount++;
