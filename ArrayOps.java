@@ -34,25 +34,38 @@ public class ArrayOps {
     }
 
     public static boolean containsTheSameElements(int [] array1,int [] array2) {
-        if (array1.length != array2.length) {
-            return false;
-        }
-        for (int i = 0; i < array1.length; i++) {
-            int count1 = 0, count2 = 0;
-            for (int j = 0; j < array1.length; j++) {
-                if (array1[i] == array1[j]) {
-                    count1++;
-                }
-                if (array1[i] == array2[j]) {
-                    count2++;
-                }
-            }
-            if (count1 != count2) {
-                return false;
+        boolean[] visitedInArray2 = new boolean[array2.length];
+    int uniqueElementsFound = 0;
+
+    for (int elementArray1 : array1) {
+        for (int j = 0; j < array2.length; j++) {
+            if (elementArray1 == array2[j] && !visitedInArray2[j]) {
+                visitedInArray2[j] = true;
+                uniqueElementsFound++;
+                break;
             }
         }
-        return true;
     }
+
+    if (uniqueElementsFound < array2.length) {
+        return false;
+    }
+
+    boolean[] visitedInArray1 = new boolean[array1.length];
+    uniqueElementsFound = 0;
+
+    for (int elementArray2 : array2) {
+        for (int j = 0; j < array1.length; j++) {
+            if (elementArray2 == array1[j] && !visitedInArray1[j]) {
+                visitedInArray1[j] = true;
+                uniqueElementsFound++;
+                break;
+            }
+        }
+    }
+
+    return uniqueElementsFound >= array1.length;
+}
 
     public static boolean isSorted(int [] array) {
         boolean ascending = true;
