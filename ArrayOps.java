@@ -32,21 +32,7 @@ public class ArrayOps {
             return max; 
         }
         return secondMax;
-    }   int max = Integer.MIN_VALUE;
-    int secondMax = Integer.MIN_VALUE;
-    for (int value : array) {
-        if (value > max) {
-            secondMax = max;
-            max = value;
-        } else if (value != max && value > secondMax) {
-            secondMax = value;
-        }
     }
-    if (secondMax == Integer.MIN_VALUE) {
-        return max; 
-    }
-    return secondMax;
-}
 
     public static boolean containsTheSameElements(int [] array1,int [] array2) {
         Set<Integer> set1 = new HashSet<>();
