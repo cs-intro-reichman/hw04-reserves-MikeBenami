@@ -26,17 +26,57 @@ public class StringOps {
     }
 
     public static String capVowelsLowRest (String string) {
-        // Write your code here:
-        return "";
+        String vowels = "aeiouAEIOU";
+        String result = "";
+        for (int i = 0; i < string.length(); i++){
+            char c = string.charAt(i);
+            if (vowels.indexOf(c) >= 0) {
+                result += Character.toUpperCase(c);
+            } else {
+                result += Character.toUpperCase(c);
+            }
+        }
+        return result;
     }
 
     public static String camelCase (String string) {
-        // Write your code here:
-        return "";
+        String result = "";
+        boolean nextUpper = false;
+        for (int i = 0; i < string.length(); i++){
+            char c = string.charAt(i);
+            if (c == ' ') {
+                nextUpper = true;
+            } else {
+                if (nextUpper){
+                    result += Character.toUpperCase(c);
+                    nextUpper = false;
+                } else {
+                    if (i == 0){
+                        result += Character.toLowerCase(c);
+                    } else {
+                        result += c;
+                    }
+                }
+            }
+        }
+        return result;
     }
 
     public static int[] allIndexOf (String string, char chr) {
-        // Write your code here:
-        return new int[1];
+        int count = 0;
+        for (int i = 0; i < string.length(); i++){
+            if (string.charAt(i) == chr){
+                count++;
+            }
+        }
+
+        int[] result = new int[count];
+        int index = 0;
+        for (int i = 0; i < string.length(); i++){
+            if (string.charAt(i) == chr){
+                result[index++] = i;
+            }
+        }
+        return result;
     }
 }
