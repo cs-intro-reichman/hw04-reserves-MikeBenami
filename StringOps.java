@@ -30,7 +30,7 @@ public class StringOps {
         String result = "";
         for (int i = 0; i < string.length(); i++){
             char c = string.charAt(i);
-            if (vowels.indexOf(c) >= 0) {
+            if (vowels.indexOf(c) != -1) {
                 result += Character.toUpperCase(c);
             } else {
                 result += Character.toUpperCase(c);
