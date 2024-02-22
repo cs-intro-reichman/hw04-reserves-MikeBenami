@@ -1,3 +1,7 @@
+import java.util.HashSet;
+import java.util.Set;
+
+
 public class ArrayOps {
     public static void main(String[] args) {
         
@@ -34,37 +38,17 @@ public class ArrayOps {
     }
 
     public static boolean containsTheSameElements(int [] array1,int [] array2) {
-        boolean[] visitedInArray2 = new boolean[array2.length];
-    int uniqueElementsFound = 0;
+        Set<Integer> set1 = new HashSet<>();
+    Set<Integer> set2 = new HashSet<>();
 
-    for (int elementArray1 : array1) {
-        for (int j = 0; j < array2.length; j++) {
-            if (elementArray1 == array2[j] && !visitedInArray2[j]) {
-                visitedInArray2[j] = true;
-                uniqueElementsFound++;
-                break;
-            }
-        }
+    for (int i : array1) {
+        set1.add(i);
+    }
+    for (int j : array2) {
+        set2.add(j);
     }
 
-    if (uniqueElementsFound < array2.length) {
-        return false;
-    }
-
-    boolean[] visitedInArray1 = new boolean[array1.length];
-    uniqueElementsFound = 0;
-
-    for (int elementArray2 : array2) {
-        for (int j = 0; j < array1.length; j++) {
-            if (elementArray2 == array1[j] && !visitedInArray1[j]) {
-                visitedInArray1[j] = true;
-                uniqueElementsFound++;
-                break;
-            }
-        }
-    }
-
-    return uniqueElementsFound >= array1.length;
+    return set1.equals(set2);
 }
 
     public static boolean isSorted(int [] array) {
