@@ -18,24 +18,28 @@ public class ArrayOps {
     }
 
     public static int secondMaxValue(int [] array) {
-        int max , secondMax;
-        if(array[0] > array[1]){
-            max = array[0];
-            secondMax = array[1];
-        } else{
-            max = array[1];
-            secondMax =array[0];
-        } 
-        for(int i = 2 ; i < array.length ; i++){
-            if(array[i] > max){
-                secondMax = max;
-                max = array[i];
-            } else if(array[i] > secondMax && array[i] != max){
-                secondMax = array[i];
+        int max = Integer.MIN_VALUE;
+    int secondMax = Integer.MIN_VALUE;
+
+    for (int value : array) {
+        if (value > max) {
+            secondMax = max;
+            max = value;
+        } else if (value > secondMax && value < max) {
+            secondMax = value;
+        }
+    }
+
+    if (secondMax == Integer.MIN_VALUE || secondMax == max) {
+        for (int value : array) {
+            if (value > secondMax && value != max) {
+                secondMax = value;
             }
         }
-        return secondMax;
     }
+
+    return secondMax == Integer.MIN_VALUE ? max : secondMax;
+}
 
     public static boolean containsTheSameElements(int [] array1,int [] array2) {
         Set<Integer> set1 = new HashSet<>();
