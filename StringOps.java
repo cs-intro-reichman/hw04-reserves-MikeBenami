@@ -42,23 +42,27 @@ public class StringOps {
     public static String camelCase (String string) {
         String result = "";
         boolean nextUpper = false;
+        boolean firstCharacterFound = false;
         for (int i = 0; i < string.length(); i++){
             char c = string.charAt(i);
-            if (c == ' ') {
-                nextUpper = true;
-            } else {
-                if (nextUpper){
-                    result += Character.toUpperCase(c);
-                    nextUpper = false;
+            if (c == ' ' && !firstCharacterFound) {
+                continue;
+            } if (c == ' ') {
+                    nextUpper = true;
                 } else {
-                    if (i == 0){
+                    if (!firstCharacterFound){
                         result += Character.toLowerCase(c);
+                        firstCharacterFound = true;
+                    } else if(nextUpper){
+                        result += Character.toUpperCase(c);
+                        nextUpper = false;
                     } else {
-                        result += c;
+                        result += Character.toLowerCase(c);
+                    }
                     }
                 }
-            }
-        }
+            
+        
         return result;
     }
 
