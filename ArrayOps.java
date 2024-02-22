@@ -34,27 +34,24 @@ public class ArrayOps {
     }
 
     public static boolean containsTheSameElements(int [] array1,int [] array2) {
-        if(array1.length != array2.length){
+        if (array1.length != array2.length) {
             return false;
         }
-        boolean[] visited = new boolean[array2.length];
-        int matchCount = 0;
-
-        for(int i = 0; i < array1.length; i++){
-            boolean matchFound = false;
-            for(int j = 0; j < array2.length; j++){
-                if(array1[i] == array2[j] && !visited[j]){
-                    visited[j] = true;
-                    matchFound = true;
-                    matchCount++;
-                    break;
+        for (int i = 0; i < array1.length; i++) {
+            int count1 = 0, count2 = 0;
+            for (int j = 0; j < array1.length; j++) {
+                if (array1[i] == array1[j]) {
+                    count1++;
+                }
+                if (array1[i] == array2[j]) {
+                    count2++;
                 }
             }
-            if(!matchFound){
+            if (count1 != count2) {
                 return false;
             }
         }
-        return matchCount == array1.length;
+        return true;
     }
 
     public static boolean isSorted(int [] array) {
